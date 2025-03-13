@@ -11,7 +11,7 @@ export function AdminPage({ children }) {
 
     const getUserList = async () => {
         try {
-            const getUserListResponse = await axios.get(`http://localhost:5000/mypage/admin?userid=${userid}`);
+            const getUserListResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage/admin?userid=${userid}`);
             if (getUserListResponse.data.userlist && getUserListResponse.data.userlist!=='') {
                 setUserList(getUserListResponse.data.userlist);
             } else {
@@ -26,7 +26,7 @@ export function AdminPage({ children }) {
     const removeUser = async (userid) => {
         try {
             console.log(userid)
-            const removeUserResponse = await axios.delete(`http://localhost:5000/mypage`, {
+            const removeUserResponse = await axios.delete(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage`, {
                 data: { 
                     userid: userid
                 }

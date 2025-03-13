@@ -58,7 +58,7 @@ export function Search({token, userip}) {
     if(!token)
       return alert("로그인 해주세요.");
     try {
-      const addBookmarkResponse = await axios.post(`http://localhost:5000/search`, {
+      const addBookmarkResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search`, {
         subwayName : query, 
         userID : userid, 
       });

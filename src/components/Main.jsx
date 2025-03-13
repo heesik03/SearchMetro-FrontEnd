@@ -12,7 +12,7 @@ export function Main({token}) {
 
     const deleteBookmark = async (userid, bookmark) => {
         try {
-            const deleteBookmarkResponse = await axios.delete(`http://localhost:5000/`, {
+            const deleteBookmarkResponse = await axios.delete(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/`, {
                 data: { 
                     userid: userid,
                     bookmark: bookmark

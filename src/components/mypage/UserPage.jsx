@@ -12,14 +12,14 @@ export function UserPage({ children }) {
         try {
             const isConfirmed = window.confirm("정말 탈퇴하시겠습니까?");
             if (isConfirmed) {
-                const deleteAccountResponse = await axios.delete(`http://localhost:5000/mypage`, {
+                const deleteAccountResponse = await axios.delete(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage`, {
                     data: { 
                         userid: userid
                     }
                 });
                 alert(deleteAccountResponse.data.message);
                 if (deleteAccountResponse.data.message==='회원탈퇴에 성공했습니다.') {
-                    await axios.post('http://localhost:5000/');
+                    await axios.post('https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/');
                     localStorage.removeItem('jwtToken');
                     window.location.href = '/';
                 }

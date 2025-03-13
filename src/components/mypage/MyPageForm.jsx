@@ -32,7 +32,7 @@ export function MyPageForm({ username, useremail, userjoinDate, updateUserName, 
             if (!passwordReg.test(changeUserpassword) || !passwordReg.test(confirmUserpassword) ) {
                 return alert("비밀번호는 알파벳, 숫자, 특수문자를 포함해야 합니다.");
             }
-            const patchUserPasswordResponse = await axios.patch(`http://localhost:5000/mypage?userid=${userid}&action=changePassword`, { 
+            const patchUserPasswordResponse = await axios.patch(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage?userid=${userid}&action=changePassword`, { 
                 oldpassword: oldpassword,
                 newpassword: changeUserpassword,
             });
@@ -49,7 +49,7 @@ export function MyPageForm({ username, useremail, userjoinDate, updateUserName, 
 
     const deleteMypageComment = async (commentid) => {
         try {
-            const deleteCommentResponse = await axios.delete(`http://localhost:5000/search/comment`, {
+            const deleteCommentResponse = await axios.delete(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/comment`, {
                 data: { 
                     commentid: commentid,
                     userid: userid

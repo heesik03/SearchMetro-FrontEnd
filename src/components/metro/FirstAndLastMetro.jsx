@@ -23,7 +23,7 @@ export function FirstAndLastMetro({subwayInfo , subwayline, query}) {
                 .filter(info => info.LINE_NUM.replace(/^0/, '') === trainline)
                 .map(info => info.STATION_CD);
             const SearchFirstandLastResponse = await axios.get(
-                `http://localhost:5000/search/FirstAndLast?subwayid=${filterSubwayInfoID[0]}&uplndnln=${uplndnln}&dayofweek=${dayofweek}&trainline=${trainline}`
+                `https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/FirstAndLast?subwayid=${filterSubwayInfoID[0]}&uplndnln=${uplndnln}&dayofweek=${dayofweek}&trainline=${trainline}`
             );
             if (!SearchFirstandLastResponse.data.Info.RESULT) {
                 setFirstAndLast(SearchFirstandLastResponse.data.Info);

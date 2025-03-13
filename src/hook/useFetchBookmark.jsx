@@ -7,7 +7,7 @@ export function useFetchBookmarks(token, userid) {
     useEffect(() => {
         const fetchBookmark = async () => {
             if (token && userid) {
-                const getBookmarkResponse = await axios.get(`http://localhost:5000/?userid=${userid}`);
+                const getBookmarkResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/?userid=${userid}`);
                 setBookmarkArray(getBookmarkResponse.data.bookmarkData.reverse());
             }
         };
