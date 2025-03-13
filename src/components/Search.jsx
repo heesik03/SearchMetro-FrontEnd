@@ -37,7 +37,7 @@ export function Search({token, userip}) {
       if (RealtimeNamefilters[query]) // 지하철 실시간 도착정보와 지하철역 정보 api 간의 역 이름 차이 보완
         setQuery(RealtimeNamefilters[query])
         
-      const responseSearch = await axios.get(`http://localhost:5000/search?query=${query}`);
+      const responseSearch = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search?query=${query}`);
       setRealtimeMetroData(responseSearch.data.realtime);
       setSubwayInfo(responseSearch.data.subwayinfo)
       setSubwayID(responseSearch.data.id);
