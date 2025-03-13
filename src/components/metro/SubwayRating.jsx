@@ -12,7 +12,7 @@ export function SubwayRating({query , token}) {
 
     const getRatingData = async() => {
       try {
-        const getRatingDataResponse = await axios.get(`http://localhost:8080/search/rating?query=${query}`);
+        const getRatingDataResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/rating?query=${query}`);
         if (getRatingDataResponse.data.totalUsers && getRatingDataResponse.data.average) {
           setRatingUserCount(getRatingDataResponse.data.totalUsers);
           setRatingAverage(getRatingDataResponse.data.average);
@@ -29,7 +29,7 @@ export function SubwayRating({query , token}) {
         return alert("별점은 1~5점으로만 매길 수 있습니다.");
       }
       try {
-        const addRatingResponse = await axios.post(`http://localhost:8080/search/rating`, {
+        const addRatingResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/rating`, {
           query : query,
           score : starScore,
           userid : userid,
