@@ -25,7 +25,7 @@ export function Login() {
                 password : userpassword
             }
     
-            const handleLoginResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/login`, userdata, { withCredentials: true });
+            const handleLoginResponse = await axios.post(`http://localhost:5000/login`, userdata, { withCredentials: true });
 
             if (handleLoginResponse.data.error) {
                 setAlertMessage(handleLoginResponse.data.error);

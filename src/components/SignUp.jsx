@@ -36,7 +36,7 @@ export function SignUp() {
                 password : signuppassword,
             }
     
-            const handleSignUpResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app//signup`, signupdata);
+            const handleSignUpResponse = await axios.post(`http://localhost:5000/signup`, signupdata);
             const responseMessage = handleSignUpResponse.data.message;
             alert(responseMessage);  // 성공 또는 실패 메시지를 표시
             if (responseMessage==='회원가입에 성공했습니다!') {
