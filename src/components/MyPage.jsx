@@ -16,7 +16,7 @@ export function MyPage() {
 
     const fetchUserData = async() => {
         try {
-            const getUserdataResponse = await axios.get(`http://localhost:5000/mypage?userid=${userid}`);
+            const getUserdataResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage?userid=${userid}`);
             if (getUserdataResponse.data.error) {
                 window.location.href = '/';
                 return alert(`${getUserdataResponse.data.error}`);
