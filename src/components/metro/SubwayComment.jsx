@@ -28,8 +28,6 @@ export function SubwayComment({ query , userip, token}) {
         e.preventDefault();
         if (!token) 
             return alert("글 작성은 로그인 후 가능합니다.");
-        if (commentArticle<=2 && commentArticle>=300)
-            return alert("글자수는 2자 이상, 300자 이하입니다.");
         try {
             const createCommentResponse = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/search/comment`, {
                 query:query, 
