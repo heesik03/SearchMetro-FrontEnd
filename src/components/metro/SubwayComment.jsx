@@ -15,7 +15,7 @@ export function SubwayComment({ query , userip, token}) {
 
     const getCommentList = async() => {
         try {
-            const getCommentListResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/comment`);
+            const getCommentListResponse = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/search/comment`);
             setCommentList(getCommentListResponse.data.commentlist.reverse());
             setOriginalComment(getCommentListResponse.data.commentlist);
         } catch (error) {
@@ -31,7 +31,7 @@ export function SubwayComment({ query , userip, token}) {
         if (commentArticle<=2 && commentArticle>=300)
             return alert("글자수는 2자 이상, 300자 이하입니다.");
         try {
-            const createCommentResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/comment`, {
+            const createCommentResponse = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/search/comment`, {
                 query:query, 
                 userid:userid, 
                 userip : userip,
@@ -53,7 +53,7 @@ export function SubwayComment({ query , userip, token}) {
         if (!token) 
             return alert("추천은 로그인 후 가능합니다.");
         try {
-            const patchLikesResponse = await axios.patch(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/comment`, { 
+            const patchLikesResponse = await axios.patch(`${process.env.REACT_APP_BACKEND_LINK}/search/comment`, { 
                 commentid :  commentid,
                 userid : userid,
             });
@@ -78,7 +78,7 @@ export function SubwayComment({ query , userip, token}) {
         if (!token) 
             return alert("글 삭제는 로그인 후 가능합니다.");
         try {
-            const deleteCommentResponse = await axios.delete(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search/comment`, {
+            const deleteCommentResponse = await axios.delete(`${process.env.REACT_APP_BACKEND_LINK}/search/comment`, {
                 data: { 
                     commentid: commentid,
                     userid: userid

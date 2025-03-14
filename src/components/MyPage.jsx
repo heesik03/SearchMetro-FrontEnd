@@ -16,7 +16,7 @@ export function MyPage() {
 
     const fetchUserData = async() => {
         try {
-            const getUserdataResponse = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage?userid=${userid}`);
+            const getUserdataResponse = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/mypage?userid=${userid}`);
             if (getUserdataResponse.data.error) {
                 window.location.href = '/';
                 return alert(`${getUserdataResponse.data.error}`);
@@ -33,7 +33,7 @@ export function MyPage() {
 
     const updateUserName = async (newUsername) => {
         try {
-            const updateResponse = await axios.patch(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/mypage?userid=${userid}&action=changeName`, { nickname: newUsername });
+            const updateResponse = await axios.patch(`${process.env.REACT_APP_BACKEND_LINK}/mypage?userid=${userid}&action=changeName`, { nickname: newUsername });
             alert(updateResponse.data.message);
             setUserName(newUsername); 
             fetchUserData();  

@@ -27,7 +27,10 @@ export function Search({token, userip}) {
     const params = new URLSearchParams(location.search);  // location.search는 쿼리 파라미터 부분
     const queryParam = params.get('query');  // 'query' 파라미터 값 추출
     if (queryParam) {
-      setQuery(queryParam);
+      let queryfilter = queryParam;
+      if (queryfilter.endsWith('역'))
+        queryfilter = queryfilter.slice(0, -1);
+      setQuery(queryfilter);
     }
   }, [location.search]); // location.search가 변경될 때마다 실행
   
@@ -37,7 +40,7 @@ export function Search({token, userip}) {
       if (RealtimeNamefilters[query]) // 지하철 실시간 도착정보와 지하철역 정보 api 간의 역 이름 차이 보완
         setQuery(RealtimeNamefilters[query])
         
-      const responseSearch = await axios.get(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search?query=${query}`);
+      const responseSearch = await axios.get(`${process.env.REACT_APP_BACKEND_LINK}/search?query=${query}`);
       setRealtimeMetroData(responseSearch.data.realtime);
       setSubwayInfo(responseSearch.data.subwayinfo)
       setSubwayID(responseSearch.data.id);
@@ -58,7 +61,7 @@ export function Search({token, userip}) {
     if(!token)
       return alert("로그인 해주세요.");
     try {
-      const addBookmarkResponse = await axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/search`, {
+      const addBookmarkResponse = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/search`, {
         subwayName : query, 
         userID : userid, 
       });

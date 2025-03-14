@@ -20,7 +20,7 @@ function App() {
 
   const tokenVerify = async (token) => {
     try {
-      const tokenVerifyResponse = await axios.post('https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/', {
+      const tokenVerifyResponse = await axios.post(`${process.env.REACT_APP_BACKEND_LINK}/`, {
         token: token,
       });
       setUserIP(tokenVerifyResponse.data.ip)

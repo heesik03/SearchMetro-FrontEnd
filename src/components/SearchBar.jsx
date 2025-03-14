@@ -19,9 +19,10 @@ export function SearchBar({token}) {
         );
         const uniqueFilteredList = [...new Set(filteredList)]; // 같은 결과값 방지
         setSearchSuggestions(uniqueFilteredList);
-      };
+    };
 
-      useEffect(() => {
+
+    useEffect(() => {
         if (debouncedSearchQuery==='') {
             setSearchSuggestions([]); // 배열 초기화
             return;
@@ -40,15 +41,13 @@ export function SearchBar({token}) {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 onKeyDown={(e) => {
                     if (e.key === 'Enter' && searchQuery.trim()) { // Enter 키가 눌리고 검색어가 비어 있지 않으면
-                    navigate(`/search?query=${encodeURIComponent(searchQuery)}`); // 검색 결과로 이동
+                        navigate(`/search?query=${encodeURIComponent(searchQuery)}`); // 검색 결과로 이동
                     }
                 }}
                 />
-                    <button type="button" className="btn btn-outline-primary" onClick={() => {
-                    if (searchQuery.trim()) { // 검색어가 비어 있지 않으면
-                        navigate(`/search?query=${encodeURIComponent(searchQuery)}`); // 쿼리 파라미터로 검색어를 전달
-                    }
-                    }}>🔍</button>
+                <button type="button" className="btn btn-outline-primary" onClick={() => {
+                    navigate(`/search?query=${encodeURIComponent(searchQuery)}`); // 필터링된 값으로 검색
+                }}>🔍</button>
             </div>
             {searchSuggestions.length ? (
                 <ul className="suggestions-ul" style={{ paddingLeft: 0 }}>

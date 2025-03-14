@@ -18,7 +18,7 @@ export class ErrorBoundary extends React.Component {
     console.error(`리액트 페이지 에러 : ${error} errorInfo : ${errorInfo}`);
     this.setState({ error, errorInfo });
 
-    axios.post(`https://port-0-searchmetro-backend-m5kj7lff67bc616e.sel4.cloudtype.app/error`, {
+    axios.post(`${process.env.REACT_APP_BACKEND_LINK}/error`, {
       error: error.toString(),
       stack: errorInfo.componentStack,
     }).catch(err => console.error("에러 전송 실패:", err));
