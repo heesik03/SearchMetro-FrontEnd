@@ -54,7 +54,7 @@ export function RealtimeMetro({realtimemetroData}) {
               return (
                 <div className="row" key={index}>
                   <p style={{ fontSize: '0.8rem', color: 'gray' }}>* {metro.recptnDt} 기준</p>
-                  {isFilteredUpdn === '' && <p><strong>{metro.updnLine}</strong></p> }   {/* 필터가 안되어 있을때만 상하행 출력 */}
+                  {isFilteredUpdn === '' && <p style={{textDecoration: 'underline'}}><strong>{metro.updnLine}</strong></p> }   {/* 필터가 안되어 있을때만 상하행 출력 */}
                   <p>
                     <strong style={{color : metroLineColor}}>{metroOption[metro.subwayId]} </strong> {/* 호선에 따라 다른 색으로 */}
                     {metro.trainLineNm}
@@ -62,7 +62,7 @@ export function RealtimeMetro({realtimemetroData}) {
                   <p style={{ color: metro.btrainSttus !== '일반' ? 'red' : 'black' }}>
                     열차 종류 : {metro.btrainSttus}
                   </p>
-                  <strong>현재 위치 : {metro.arvlMsg2}</strong>
+                  <p>현재 위치 : <strong>{metro.arvlMsg2}</strong></p>
                   <strong style={{ color: 'red' }}>
                     {metro.lstcarAt === '1' && ' 막차'}
                   </strong>
